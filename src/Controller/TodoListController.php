@@ -31,14 +31,10 @@ class TodoListController
      */
     public function getAllTodoLists(Request $request, Response $response)
     {
-        $data = [];
-        $items = $this->todoListRepository->fetchAll();
-        foreach ($items as $item) {
-            $data[] = [
-                'id' => $item->id(),
-                'name' => $item->name(),
-            ];
-        }
-        return $response->withJson(['data' => $data]);
+        // Retrieve and encode to JSON the TodoLists
+        $todoLists = $this->todoListRepository->fetchAll();
+        $response->getBody()->write(json_encode($todoLists));
+
+        return $response;
     }
 }

@@ -6,14 +6,14 @@ use TodoApi\TodoListRepository;
 
 require_once __DIR__ . '/../vendor/autoload.php';
 
+// Database
+require __DIR__ . '/../src/config/Database.php';
+
+// Create a new instance of the app
 $app = new App();
 
-$container = $app->getContainer();
+// TodoList routes
+require __DIR__ . '/../src/routes/TodoList.php';
 
-$container[TodoListRepository::class] = function() {
-    return new TodoListRepository();
-};
-
-$app->get('/list', TodoListController::class . ':getAllTodoLists');
-
+// Run the app
 $app->run();
