@@ -37,4 +37,26 @@ class TodoListController
 
         return $response;
     }
+
+    public function createTodoList(Request $request, Response $response)
+    {
+        // Get the name to be added from the parameters
+        $name = $request->getParam("name");
+
+        $added = $this->todoListRepository->create($name);
+        $response->getBody()->write($added);
+
+        return $response;
+    }
+
+    public function deleteTodoList(Request $request, Response $response) 
+    {
+        // Get the ID of the list to be deleted
+        $id = $request->getAttribute("id");
+
+        $deleted = $this->todoListRepository->delete($id);
+        $response->getBody()->write($deleted);
+
+        return $response;
+    }
 }

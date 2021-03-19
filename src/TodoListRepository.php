@@ -2,6 +2,7 @@
 
 namespace TodoApi;
 
+use Slim\Http\Request;
 use Database;
 use PDO;
 
@@ -28,6 +29,63 @@ class TodoListRepository
             $db = null;
 
             return $todoLists;
+        }
+        catch (PDOException $exception) {
+            echo '{"error": {"text": '.$e->getMessage().'}';
+            return null;
+        }
+    }
+
+    /**
+     * Create a new TodoList
+     */
+    public function create(string $name)
+    {
+        // Query to insert new TodoList
+        $sql = "INSERT INTO todo_list (name)
+                    VALUES (:name)";
+
+        try {
+            // Get database object
+            $database = new Database();
+            // Connect to the database
+            $database = $database->connect();
+
+            // Add the parameters to the query
+            $stmt = $database->prepare($sql);
+            $stmt->bindParam(":name", $name);
+
+            // Run the query
+            $stmt->execute();
+            $db = null;
+
+            return '{"notice": {"text": "TodoList Added"}';
+        }
+        catch (PDOException $exception) {
+            echo '{"error": {"text": '.$e->getMessage().'}';
+            return null;
+        }
+    }
+
+    /**
+     * Delete a specific TodoList
+     */
+    public function delete(int $id) {
+        // Query to delete the specified TodoList
+        $sql = "DELETE FROM todo_list WHERE id = $id";
+
+        try {            
+            // Get database object
+            $database = new Database();
+            // Connect to the database
+            $database = $database->connect();
+    
+            // Run the query
+            $stmt = $database->prepare($sql);
+            $stmt->execute();
+            $db = null;
+
+            return '"notice": {"text": "TodoList Deleted"}';
         }
         catch (PDOException $exception) {
             echo '{"error": {"text": '.$e->getMessage().'}';

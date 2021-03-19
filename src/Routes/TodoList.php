@@ -15,3 +15,7 @@ $container[TodoListRepository::class] = function() {
 
 // Get all the TodoLists
 $app->get('/list', TodoListController::class . ':getAllTodoLists');
+// Add a new TodoList
+$app->post('/list/add', TodoListController::class . ':createTodoList');
+// Delete a TodoList
+$app->delete('/list/delete/{id}', TodoListController::class . ':deleteTodoList');

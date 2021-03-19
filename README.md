@@ -5,7 +5,7 @@ CREATE DATABASE todo_api;
 
 USE todo_api;
 CREATE TABLE todo_list (
-    id INT NOT NULL,
+    id INT NOT NULL AUTO_INCREMENT,
     name VARCHAR(255),
     PRIMARY KEY (ID)
 );
