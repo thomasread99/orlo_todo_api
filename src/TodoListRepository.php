@@ -31,7 +31,7 @@ class TodoListRepository
             return $todoLists;
         }
         catch (PDOException $exception) {
-            echo '{"error": {"text": '.$e->getMessage().'}';
+            echo '{"error": {"text": '.$exception->getMessage().'}';
             return null;
         }
     }
@@ -62,7 +62,7 @@ class TodoListRepository
             return '{"notice": {"text": "TodoList Added"}';
         }
         catch (PDOException $exception) {
-            echo '{"error": {"text": '.$e->getMessage().'}';
+            echo '{"error": {"text": '.$exception->getMessage().'}';
             return null;
         }
     }
@@ -85,11 +85,43 @@ class TodoListRepository
             $stmt->execute();
             $db = null;
 
-            return '"notice": {"text": "TodoList Deleted"}';
+            return '{"notice": {"text": "TodoList Deleted"}';
         }
         catch (PDOException $exception) {
-            echo '{"error": {"text": '.$e->getMessage().'}';
+            echo '{"error": {"text": '.$exception->getMessage().'}';
             return null;
         }
+    }
+
+    /**
+     * Update the name of a TodoList
+     */
+    public function update(int $id, string $name) {
+        // Query to update the name of the specified TodoList
+        $sql = "UPDATE todo_list SET
+                    name = :name
+                WHERE id = $id";
+
+        try {
+            // Get database object
+            $database = new Database();
+            // Connect to the database
+            $database = $database->connect();
+
+            // Add the parameters to the query
+            $stmt = $database->prepare($sql);
+            $stmt->bindParam(":name", $name);
+
+            // Run the query
+            $stmt->execute();
+            $db = null;
+
+            return '{"notice": {"text": "TodoList Updated"}';
+        }
+        catch (PDOException $exception) {
+            echo '{"error": {"text": '.$exception->getMessage().'}';
+            return null;
+        }
+
     }
 }

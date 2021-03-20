@@ -33,7 +33,7 @@ class TodoListController
     {
         // Retrieve and encode to JSON the TodoLists
         $todoLists = $this->todoListRepository->fetchAll();
-        $response->getBody()->write(json_encode($todoLists));
+        $response->getBody()->write(json_encode($todoLists, JSON_NUMERIC_CHECK));
 
         return $response;
     }
@@ -56,6 +56,18 @@ class TodoListController
 
         $deleted = $this->todoListRepository->delete($id);
         $response->getBody()->write($deleted);
+
+        return $response;
+    }
+
+    public function updateTodoList(Request $request, Response $response)
+    {
+        // Get the ID and name of the list to be updated
+        $id = $request->getAttribute("id");
+        $name = $request->getParam("name");
+
+        $updated = $this->todoListRepository->update($id, $name);
+        $response->getBody()->write($updated);
 
         return $response;
     }

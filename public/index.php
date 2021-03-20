@@ -12,8 +12,8 @@ require __DIR__ . '/../src/config/Database.php';
 // Create a new instance of the app
 $app = new App();
 
-// TodoList routes
-require __DIR__ . '/../src/routes/TodoList.php';
+// Routes file
+require __DIR__ . '/../src/routes/Routes.php';
 
 // Run the app
 $app->run();
