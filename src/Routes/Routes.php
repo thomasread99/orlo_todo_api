@@ -9,7 +9,7 @@ use TodoApi\TodoItemRepository;
 // Create a new instance of the app
 $app = new App();
 
-// Get the container and give it a TodoListRepository
+// Get the container and give it a TodoListRepository and a TodoItemRepository
 $container = $app->getContainer();
 $container[TodoListRepository::class] = function() {
     return new TodoListRepository();

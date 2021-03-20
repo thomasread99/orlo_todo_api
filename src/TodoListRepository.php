@@ -71,8 +71,8 @@ class TodoListRepository
      * Delete a specific TodoList
      */
     public function delete(int $id) {
-        // Query to delete the specified TodoList
-        $sql = "DELETE FROM todo_list WHERE id = $id";
+        // Query to delete the specified TodoList and its associated TodoItems
+        $sql = " DELETE FROM todo_items WHERE list_id = $id; DELETE FROM todo_list WHERE id = $id";
 
         try {            
             // Get database object
