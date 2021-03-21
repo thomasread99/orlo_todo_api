@@ -62,6 +62,10 @@ CREATE TABLE todo_items (
 <br>
 MySQL must be running in order for the app to work. Please refer to your web servers documentation for full instructions on this.
 
+<br>
+<br>
+<b>IMPORTANT</b> - in the `src\Config\Database.php` file, you must update the values of `$host, $username, $password` in order for the database connection to work. It is configured by default to run with the root user, with no password, on localhost.
+
 ## USAGE
 Once all the setup has been complete, you can launch the API using PHPs inbuilt web server by running in the command line:
 <br>
