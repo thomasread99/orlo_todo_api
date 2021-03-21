@@ -13,7 +13,13 @@ This is my implementation of the Todo API as part of the programming assessment 
   * Filtered by Overdue
   * Filtered by completion status
 
-## Prerequisites
+## PREREQUISITES
+In order to use this program, you must have minimum:
+* PHP version 5.5
+* Web server (eg. Apache)
+* MySQL
+
+Setup and usage instructions for this program were tested on a Windows 10 system. Modify as appropriate for different systems.
 
 ## SETUP
 When using the app for the first time, `cd` into the `orlo_todo_api` directory and run
