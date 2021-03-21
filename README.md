@@ -16,6 +16,7 @@ This is my implementation of the Todo API as part of the programming assessment 
 ## PREREQUISITES
 In order to use this program, you must have minimum:
 * PHP version 5.5
+* Composer Dependency Manager for PHP
 * Web server (eg. Apache)
 * MySQL
 
