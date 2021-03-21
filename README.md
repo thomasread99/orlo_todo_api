@@ -67,7 +67,7 @@ Once all the setup has been complete, you can launch the API using PHPs inbuilt 
 `php -S localhost:8888 -t public public/index.php`
 
 ### API REQUESTS
-You can use any platform for testing the API but I would reccomend Postman or Curl. All requests shown below should be preceded by the URL that you are running the API on (http://localhost:8888 if running the same command as above). The HTTP command (GET, POST, PUT, etc.) is shown before each URL path.
+You can use any platform for testing the API but I would recommend Postman or Curl. All requests shown below should be preceded by the URL that you are running the API on (http://localhost:8888 if running the same command as above). The HTTP command (GET, POST, PUT, etc.) is shown before each URL path.
 
 #### LIST ALL TODO LISTS
 `GET /lists`
