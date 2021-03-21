@@ -40,6 +40,7 @@ CREATE TABLE todo_list (
 );
 `
 <br>
+<br>
 `
 CREATE TABLE todo_items (
     id INT NOT NULL AUTO_INCREMENT,
@@ -51,6 +52,7 @@ CREATE TABLE todo_items (
     FOREIGN KEY (list_id) REFERENCES todo_list(id)    
 );
 `
+<br>
 MySQL must be running in order for the app to work. Please refer to your web servers documentation for full instructions on this.
 
 ## USAGE
